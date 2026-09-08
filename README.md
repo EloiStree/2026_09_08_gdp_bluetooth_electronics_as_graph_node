@@ -1,3 +1,8 @@
+
+```
+git submodule add https://github.com/EloiStree/2026_09_08_gdp_bluetooth_electronics_as_graph_node.git addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node
+```
+
 > Feel free to help with this one.
 
 # 2026_09_08_gdp_bluetooth_electronics_as_graph_node
