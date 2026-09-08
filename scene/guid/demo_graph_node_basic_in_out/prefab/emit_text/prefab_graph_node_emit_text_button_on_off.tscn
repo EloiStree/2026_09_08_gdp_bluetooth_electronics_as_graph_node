@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bm2uleg5dm84a"]
+
+[ext_resource type="PackedScene" uid="uid://jx4h7p7qvflf" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/core/prefab_graph_node_emit_text.tscn" id="1_r43b4"]
+[ext_resource type="Script" uid="uid://g7dqnyauq2ql" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/out/be_graph_emit_from_button_on_down_up.gd" id="2_1p62y"]
+
+[node name="GraphNode Emit Text Button Down Up" unique_id=1032655674 instance=ExtResource("1_r43b4")]
+title = "Out: Button Down Up"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="Button" type="Button" parent="." index="2" unique_id=289898048]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Down/Up"
+
+[node name="BeGraphEmitFromButtonOnDownUp" type="Node" parent="Button" index="0" unique_id=1969906452 node_paths=PackedStringArray("_emitter", "_linked_button")]
+script = ExtResource("2_1p62y")
+_emitter = NodePath("../../BeGraphAbstractTextToRemoteEmitter")
+_linked_button = NodePath("..")
+_on_down_text = "BUTTON DOWN"
+_on_up_text = "BUTTON UP"
+metadata/_custom_type_script = "uid://g7dqnyauq2ql"

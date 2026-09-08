@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c4eek4sr8e2e6"]
+
+[ext_resource type="PackedScene" uid="uid://bcbu4i34ig2p3" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/core/prefab_graph_node_listen_text.tscn" id="1_0o0y8"]
+[ext_resource type="Script" uid="uid://chmbbh2eqx6ka" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/in/be_graph_in_text_to_light_indicator.gd" id="2_by6iu"]
+
+[node name="GraphNode Listen Text" unique_id=171193175 instance=ExtResource("1_0o0y8")]
+title = "In: Light"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="ColorRect" type="ColorRect" parent="." index="2" unique_id=748295062]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BeGraphInTextToLightIndicator" type="Node" parent="ColorRect" index="0" unique_id=1408577354 node_paths=PackedStringArray("_listener", "_affected_slider")]
+script = ExtResource("2_by6iu")
+_listener = NodePath("../../BeGraphAbstractTextFromRemoteListener")
+_affected_slider = [NodePath("..")]

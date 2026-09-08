@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://bdg6u0m1eycbj"]
+
+[ext_resource type="Script" uid="uid://7ick7ovk3l3u" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/broadcast/be_graph_broadcast_text_to_listeners.gd" id="1_onitf"]
+[ext_resource type="Script" uid="uid://bb2bls2fm2qvj" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/broadcast/be_graph_listen_to_text_emitters.gd" id="2_jiiy3"]
+[ext_resource type="PackedScene" uid="uid://jx4h7p7qvflf" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/core/prefab_graph_node_emit_text.tscn" id="3_bsoij"]
+[ext_resource type="PackedScene" uid="uid://bcbu4i34ig2p3" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/core/prefab_graph_node_listen_text.tscn" id="4_pjmfq"]
+[ext_resource type="PackedScene" uid="uid://dapc0ycaat4sg" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/core/prefab_graph_node_emit_and_listen.tscn" id="5_k8uav"]
+[ext_resource type="PackedScene" uid="uid://cerpmec0bc8x2" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/emit_text/prefab_graph_node_emit_text_button_from_text_case.tscn" id="6_g3twc"]
+[ext_resource type="PackedScene" uid="uid://bm2uleg5dm84a" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/emit_text/prefab_graph_node_emit_text_button_on_off.tscn" id="7_tij52"]
+[ext_resource type="PackedScene" uid="uid://bjgdjd6howgon" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/emit_text/prefab_graph_node_emit_text_toggle.tscn" id="8_wqtqh"]
+[ext_resource type="PackedScene" uid="uid://be21ykslq6yrf" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/listen_text/prefab_graph_node_listen_text_in_label.tscn" id="9_tij52"]
+[ext_resource type="PackedScene" uid="uid://cbgvv3knjiimc" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/listen_text/prefab_graph_node_listen_text_vertical_gauge_basic.tscn" id="10_wqtqh"]
+[ext_resource type="PackedScene" uid="uid://c4eek4sr8e2e6" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/listen_text/prefab_graph_node_listen_text_light_indicator.tscn" id="11_ohhy1"]
+
+[node name="Demo" type="Control" unique_id=843151644]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Emitters" type="Node" parent="." unique_id=1089267683 node_paths=PackedStringArray("_parent_node")]
+script = ExtResource("2_jiiy3")
+_parent_node = NodePath("../GraphEdit")
+metadata/_custom_type_script = "uid://bb2bls2fm2qvj"
+
+[node name="Listeners" type="Node" parent="." unique_id=1986791576 node_paths=PackedStringArray("_parent_node")]
+script = ExtResource("1_onitf")
+_parent_node = NodePath("../GraphEdit")
+metadata/_custom_type_script = "uid://7ick7ovk3l3u"
+
+[node name="Panel" type="Panel" parent="." unique_id=1118940315]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.047797564
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=492181961]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="Panel/HBoxContainer" unique_id=396831590]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label In" type="Label" parent="Panel/HBoxContainer" unique_id=220720360]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label Out" type="Label" parent="Panel/HBoxContainer" unique_id=726262626]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GraphEdit" type="GraphEdit" parent="." unique_id=658164110]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.053000003
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.4489975
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphNode Emit Text" parent="GraphEdit" unique_id=1032655674 instance=ExtResource("3_bsoij")]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 57.0
+offset_right = 180.0
+offset_bottom = 207.0
+position_offset = Vector2(16, 57)
+
+[node name="GraphNode Emit And Listen" parent="GraphEdit" unique_id=766259914 instance=ExtResource("5_k8uav")]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 834.0
+offset_right = 203.0
+offset_bottom = 984.0
+position_offset = Vector2(39, 834)
+
+[node name="GraphNode Listen Text" parent="GraphEdit" unique_id=171193175 instance=ExtResource("4_pjmfq")]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 678.0
+offset_right = 202.0
+offset_bottom = 828.0
+position_offset = Vector2(38, 678)
+
+[node name="GraphNode Emit Text2" parent="GraphEdit" unique_id=2011921650 instance=ExtResource("6_g3twc")]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 216.0
+offset_right = 182.0
+offset_bottom = 366.0
+position_offset = Vector2(18, 216)
+
+[node name="GraphNode Emit Text3" parent="GraphEdit" unique_id=917229371 instance=ExtResource("7_tij52")]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 54.0
+offset_right = 367.0
+offset_bottom = 204.0
+position_offset = Vector2(188, 54)
+
+[node name="GraphNode Emit Text4" parent="GraphEdit" unique_id=1283465462 instance=ExtResource("8_wqtqh")]
+layout_mode = 0
+offset_left = 378.0
+offset_top = 54.0
+offset_right = 542.0
+offset_bottom = 204.0
+position_offset = Vector2(378, 54)
+
+[node name="GraphNode Listen Text2" parent="GraphEdit" unique_id=1780926746 instance=ExtResource("9_tij52")]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 682.0
+offset_right = 477.0
+offset_bottom = 762.0
+position_offset = Vector2(313, 682)
+
+[node name="GraphNode Listen Text Vertical Gauge Basic" parent="GraphEdit" unique_id=1145341686 instance=ExtResource("10_wqtqh")]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 680.0
+offset_right = 296.0
+offset_bottom = 830.0
+position_offset = Vector2(210, 680)
+
+[node name="GraphNode Listen Text3" parent="GraphEdit" unique_id=738919388 instance=ExtResource("11_ohhy1")]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 839.0
+offset_right = 333.0
+offset_bottom = 937.0
+position_offset = Vector2(220, 839)
+
+[connection signal="on_text_received_from_emitters" from="Emitters" to="Panel/HBoxContainer/Label Out" method="set_text"]
+[connection signal="on_received_text_from_remote" from="Listeners" to="Panel/HBoxContainer/Label In" method="set_text"]
+[connection signal="text_submitted" from="Panel/HBoxContainer/LineEdit" to="Listeners" method="push_text_to_all_listeners"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dapc0ycaat4sg"]
+
+[ext_resource type="Script" uid="uid://82rmr3xb0rb3" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/abstract/be_graph_abstract_text_to_remote_emitter.gd" id="1_nhnfp"]
+[ext_resource type="Script" uid="uid://b0ll3ao2euweh" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/abstract/be_graph_abstract_text_from_remote_listener.gd" id="2_oen1r"]
+
+[node name="GraphNode Emit And Listen" type="GraphNode" unique_id=766259914]
+offset_left = 79.0
+offset_top = 604.0
+offset_right = 243.0
+offset_bottom = 754.0
+mouse_filter = 1
+position_offset = Vector2(79, 604)
+title = "IO: Emit / Listen"
+
+[node name="BeGraphAbstractEmitTextToSendAtTarget" type="Node" parent="." unique_id=17650280 node_paths=PackedStringArray("_linked_graph_node")]
+script = ExtResource("1_nhnfp")
+_linked_graph_node = NodePath("..")
+
+[node name="BeGraphAbstractListenToLogTextToDisplay" type="Node" parent="." unique_id=1833713696 node_paths=PackedStringArray("_linked_graph_node")]
+script = ExtResource("2_oen1r")
+_linked_graph_node = NodePath("..")

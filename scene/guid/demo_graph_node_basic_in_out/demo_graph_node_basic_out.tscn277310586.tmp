@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://h0i7b54vqslp"]
+
+[ext_resource type="Script" uid="uid://bb2bls2fm2qvj" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_out/script/broadcast/be_graph_listen_to_text_emitter.gd" id="1_anymv"]
+[ext_resource type="PackedScene" uid="uid://jx4h7p7qvflf" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_out/prefab/graph_node_emit_text.tscn" id="1_jaku5"]
+[ext_resource type="Script" uid="uid://7ick7ovk3l3u" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_out/script/broadcast/be_graph_broadcast_text_to_listeners.gd" id="2_20ed4"]
+[ext_resource type="PackedScene" uid="uid://bcbu4i34ig2p3" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_out/prefab/graph_node_listen_text.tscn" id="2_kigho"]
+[ext_resource type="PackedScene" uid="uid://dapc0ycaat4sg" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_out/prefab/graph_node_emit_and_listen.tscn" id="3_2f1c0"]
+[ext_resource type="Script" uid="uid://by0xipf0iwwgw" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_out/script/be_graph_emit_from_button_name_text_using_case.gd" id="4_kigho"]
+
+[sub_resource type="GDScript" id="GDScript_anymv"]
+script/source = "class_name BeeGraphAbstractTextToRemoteEmitter
+extends Node
+
+signal on_request_to_send_text_to_remote(given_text:String)
+
+@export var _linked_graph_node:GraphNode
+
+func emit_text_to_send_to_remote(given_text:String):
+	on_request_to_send_text_to_remote.emit(given_text)
+"
+
+[node name="DemoGraphNodeBasicOut" type="Control" unique_id=1766131463]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BeGraphListenToTextEmitter" type="Node" parent="." unique_id=1818613500 node_paths=PackedStringArray("_parent_node")]
+script = ExtResource("1_anymv")
+_parent_node = NodePath("../GraphEdit")
+metadata/_custom_type_script = "uid://bb2bls2fm2qvj"
+
+[node name="BeGraphBroadcastTextToListeners" type="Node" parent="." unique_id=951469998 node_paths=PackedStringArray("_parent_node")]
+script = ExtResource("2_20ed4")
+_parent_node = NodePath("../GraphEdit")
+metadata/_custom_type_script = "uid://7ick7ovk3l3u"
+
+[node name="Panel" type="Panel" parent="." unique_id=1295143792]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.046860356
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=558336783]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.66
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label Received" type="Label" parent="Panel/HBoxContainer" unique_id=1813846357]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label Send" type="Label" parent="Panel/HBoxContainer" unique_id=1351266958]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GraphEdit" type="GraphEdit" parent="." unique_id=2096974949]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.04618838
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.28300095
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="GraphNode Emit Text" parent="GraphEdit" unique_id=1032655674 instance=ExtResource("1_jaku5")]
+layout_mode = 0
+
+[node name="BeGraphAbstractTextToRemoteEmitter" parent="GraphEdit/GraphNode Emit Text" index="1" unique_id=963605416]
+script = SubResource("GDScript_anymv")
+
+[node name="GraphNode Listen Text" parent="GraphEdit" unique_id=171193175 instance=ExtResource("2_kigho")]
+layout_mode = 0
+
+[node name="BeGraphAbstractTextFromRemoteListener" parent="GraphEdit/GraphNode Listen Text" index="1" unique_id=960757688]
+script = null
+
+[node name="GraphNode Emit And Listen" parent="GraphEdit" unique_id=766259914 instance=ExtResource("3_2f1c0")]
+layout_mode = 0
+
+[node name="BeGraphAbstractEmitTextToSendAtTarget" parent="GraphEdit/GraphNode Emit And Listen" index="1" unique_id=17650280]
+script = SubResource("GDScript_anymv")
+
+[node name="BeGraphAbstractListenToLogTextToDisplay" parent="GraphEdit/GraphNode Emit And Listen" index="2" unique_id=1833713696]
+script = null
+
+[node name="GraphNode Emit Text Button From Label" parent="GraphEdit" unique_id=1111935324 instance=ExtResource("1_jaku5")]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 245.0
+offset_right = 477.0
+offset_bottom = 395.0
+position_offset = Vector2(313, 245)
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="BeGraphAbstractTextToRemoteEmitter" parent="GraphEdit/GraphNode Emit Text Button From Label" index="1" unique_id=963605416]
+script = SubResource("GDScript_anymv")
+
+[node name="Button" type="Button" parent="GraphEdit/GraphNode Emit Text Button From Label" unique_id=1475413375]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "B"
+
+[node name="BeGraphEmitFromButtonNameTextUsingCase" type="Node" parent="GraphEdit/GraphNode Emit Text Button From Label/Button" unique_id=1243970511 node_paths=PackedStringArray("_linked_button")]
+script = ExtResource("4_kigho")
+_linked_button = NodePath("..")
+metadata/_custom_type_script = "uid://by0xipf0iwwgw"
+
+[connection signal="on_text_emitted" from="GraphEdit/GraphNode Emit Text Button From Label/Button/BeGraphEmitFromButtonNameTextUsingCase" to="GraphEdit/GraphNode Emit Text Button From Label/BeGraphAbstractTextToRemoteEmitter" method="emit_given_text_to_send"]
+
+[editable path="GraphEdit/GraphNode Emit Text"]
+[editable path="GraphEdit/GraphNode Listen Text"]
+[editable path="GraphEdit/GraphNode Emit And Listen"]
+[editable path="GraphEdit/GraphNode Emit Text Button From Label"]
