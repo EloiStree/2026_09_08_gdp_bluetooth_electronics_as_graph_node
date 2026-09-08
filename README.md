@@ -34,3 +34,7 @@ The idea would be to provide a visual node-based interface where users could cre
 The Bluetooth implementation itself is out of scope. The focus is on creating the **Godot Graph Node/UI system** that provides a similar workflow to the original Bluetooth Electronics application.
 
 The goal is essentially to recreate the useful control-panel concept of Bluetooth Electronics, but as a native graph-based tool/workflow inside Godot.
+
+--------------
+
+<img width="390" height="674" alt="image" src="https://github.com/user-attachments/assets/7e01cb07-4bf2-4ca9-b6be-3949402c631e" />
