@@ -38,3 +38,33 @@ The goal is essentially to recreate the useful control-panel concept of Bluetoot
 --------------
 
 <img width="390" height="674" alt="image" src="https://github.com/user-attachments/assets/7e01cb07-4bf2-4ca9-b6be-3949402c631e" />
+
+
+
+
+
+
+-------
+
+BLE Addons
+- https://github.com/duffrecords/GodotAndroidBle
+
+
+
+
+------------
+
+GarphNode
+
+- Connecting GraphNodes to create powerful applications https://youtu.be/AX5pN3mwfBc?t=224
+
+
+
+
+
+
+
+
+
+
+
