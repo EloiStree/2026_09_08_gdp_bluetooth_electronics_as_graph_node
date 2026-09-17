@@ -3,6 +3,7 @@ extends Node
 
 
 signal on_value_changed(value:float)
+signal on_value_changed_as_string(value:String)
 
 @export var _listener:BeGraphAbstractTextFromRemoteListener
 @export var _current_value:float=0
@@ -34,6 +35,7 @@ func push_in_text(text:String):
 					value=_gauge_range_max_value
 				_current_value=value
 				on_value_changed.emit(_current_value)
+				on_value_changed_as_string.emit(str(_current_value))
 				if _affected_slider:
 					_affected_slider.step=_gauge_step_value
 					_affected_slider.min_value=_gauge_range_min_value

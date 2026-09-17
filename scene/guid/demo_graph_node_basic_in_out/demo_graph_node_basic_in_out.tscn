@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7ick7ovk3l3u" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/broadcast/be_graph_broadcast_text_to_listeners.gd" id="1_onitf"]
 [ext_resource type="Script" uid="uid://bb2bls2fm2qvj" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/broadcast/be_graph_listen_to_text_emitters.gd" id="2_jiiy3"]
+[ext_resource type="Script" uid="uid://clhoxsvfour7q" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/script/unstore/be_graph_relay_formated_uart_with_prefix.gd" id="2_wd707"]
 [ext_resource type="PackedScene" uid="uid://jx4h7p7qvflf" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/core/prefab_graph_node_emit_text.tscn" id="3_bsoij"]
 [ext_resource type="PackedScene" uid="uid://bcbu4i34ig2p3" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/core/prefab_graph_node_listen_text.tscn" id="4_pjmfq"]
 [ext_resource type="PackedScene" uid="uid://dapc0ycaat4sg" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/core/prefab_graph_node_emit_and_listen.tscn" id="5_k8uav"]
@@ -9,8 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://bm2uleg5dm84a" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/emit_text/prefab_graph_node_emit_text_button_on_off.tscn" id="7_tij52"]
 [ext_resource type="PackedScene" uid="uid://bjgdjd6howgon" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/emit_text/prefab_graph_node_emit_text_toggle.tscn" id="8_wqtqh"]
 [ext_resource type="PackedScene" uid="uid://be21ykslq6yrf" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/listen_text/prefab_graph_node_listen_text_in_label.tscn" id="9_tij52"]
+[ext_resource type="Script" uid="uid://b0ll3ao2euweh" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/script/abstract/be_graph_abstract_text_from_remote_listener.gd" id="10_2bw3u"]
 [ext_resource type="PackedScene" uid="uid://cbgvv3knjiimc" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/listen_text/prefab_graph_node_listen_text_vertical_gauge_basic.tscn" id="10_wqtqh"]
 [ext_resource type="PackedScene" uid="uid://c4eek4sr8e2e6" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/listen_text/prefab_graph_node_listen_text_light_indicator.tscn" id="11_ohhy1"]
+[ext_resource type="PackedScene" uid="uid://pd17i5l05nsd" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/listen_text/prefab_graph_node_listen_analog_list_b62.tscn" id="14_8aljm"]
+[ext_resource type="Script" uid="uid://bagthxl1vawob" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/script/unstore/be_graph_save_address_in_line_edit.gd" id="14_ew2xb"]
+[ext_resource type="PackedScene" uid="uid://du07xukbyarxq" path="res://addons/2026_09_08_gdp_bluetooth_electronics_as_graph_node/scene/guid/demo_graph_node_basic_in_out/prefab/listen_text/prefab_graph_node_listen_digital_list_b62.tscn" id="15_d7g4l"]
 
 [node name="Demo" type="Control" unique_id=843151644]
 layout_mode = 3
@@ -26,6 +31,11 @@ size_flags_vertical = 3
 script = ExtResource("2_jiiy3")
 _parent_node = NodePath("../GraphEdit")
 metadata/_custom_type_script = "uid://bb2bls2fm2qvj"
+
+[node name="Emit as Formated" type="Node" parent="Emitters" unique_id=2035474577]
+script = ExtResource("2_wd707")
+_prefix_text = "uart|out|%s|%s"
+metadata/_custom_type_script = "uid://clhoxsvfour7q"
 
 [node name="Listeners" type="Node" parent="." unique_id=1986791576 node_paths=PackedStringArray("_parent_node")]
 script = ExtResource("1_onitf")
@@ -81,11 +91,11 @@ grow_vertical = 2
 
 [node name="GraphNode Emit Text" parent="GraphEdit" unique_id=1032655674 instance=ExtResource("3_bsoij")]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 57.0
-offset_right = 180.0
-offset_bottom = 207.0
-position_offset = Vector2(16, 57)
+offset_left = -18.0
+offset_top = 366.0
+offset_right = 146.0
+offset_bottom = 516.0
+position_offset = Vector2(-18, 366)
 
 [node name="GraphNode Emit And Listen" parent="GraphEdit" unique_id=766259914 instance=ExtResource("5_k8uav")]
 layout_mode = 0
@@ -105,52 +115,290 @@ position_offset = Vector2(38, 678)
 
 [node name="GraphNode Emit Text2" parent="GraphEdit" unique_id=2011921650 instance=ExtResource("6_g3twc")]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 216.0
-offset_right = 182.0
-offset_bottom = 366.0
-position_offset = Vector2(18, 216)
+offset_left = -10.0
+offset_top = 401.0
+offset_right = 154.0
+offset_bottom = 551.0
+position_offset = Vector2(-10, 401)
 
 [node name="GraphNode Emit Text3" parent="GraphEdit" unique_id=917229371 instance=ExtResource("7_tij52")]
 layout_mode = 0
-offset_left = 188.0
-offset_top = 54.0
-offset_right = 367.0
-offset_bottom = 204.0
-position_offset = Vector2(188, 54)
+offset_left = -23.0
+offset_top = 473.0
+offset_right = 156.0
+offset_bottom = 623.0
+position_offset = Vector2(-23, 473)
 
 [node name="GraphNode Emit Text4" parent="GraphEdit" unique_id=1283465462 instance=ExtResource("8_wqtqh")]
 layout_mode = 0
-offset_left = 378.0
-offset_top = 54.0
-offset_right = 542.0
-offset_bottom = 204.0
-position_offset = Vector2(378, 54)
+offset_left = -11.0
+offset_top = 431.0
+offset_right = 153.0
+offset_bottom = 581.0
+position_offset = Vector2(-11, 431)
 
 [node name="GraphNode Listen Text2" parent="GraphEdit" unique_id=1780926746 instance=ExtResource("9_tij52")]
 layout_mode = 0
-offset_left = 313.0
-offset_top = 682.0
-offset_right = 477.0
-offset_bottom = 762.0
-position_offset = Vector2(313, 682)
+offset_left = 358.0
+offset_top = 707.0
+offset_right = 522.0
+offset_bottom = 787.0
+position_offset = Vector2(358, 707)
+
+[node name="GraphNode Listen Text6" type="GraphNode" parent="GraphEdit" unique_id=261437058]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 531.0
+offset_right = 524.0
+offset_bottom = 611.0
+mouse_filter = 1
+position_offset = Vector2(360, 531)
+title = "In: Label"
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="BeGraphAbstractTextFromRemoteListener" type="Node" parent="GraphEdit/GraphNode Listen Text6" unique_id=960757688 node_paths=PackedStringArray("_linked_graph_node")]
+script = ExtResource("10_2bw3u")
+_linked_graph_node = NodePath("..")
+
+[node name="Label" type="Label" parent="GraphEdit/GraphNode Listen Text6" unique_id=1413004379]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GraphNode Listen Text Vertical Gauge Basic" parent="GraphEdit" unique_id=1145341686 instance=ExtResource("10_wqtqh")]
 layout_mode = 0
 offset_left = 210.0
 offset_top = 680.0
-offset_right = 296.0
+offset_right = 332.0
 offset_bottom = 830.0
 position_offset = Vector2(210, 680)
 
+[node name="GraphNode Listen Text Vertical Gauge Basic4" parent="GraphEdit" unique_id=219149530 instance=ExtResource("10_wqtqh")]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 361.0
+offset_right = 375.0
+offset_bottom = 501.0
+position_offset = Vector2(323, 361)
+title = "ML"
+
+[node name="VSlider" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic4" index="2" unique_id=1300271918]
+max_value = 255.0
+
+[node name="BeGraphInTextToGaugeBasic" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic4/VSlider" index="0" unique_id=904532289]
+_gauge_range_min_value = -255.0
+_gauge_range_max_value = 255.0
+_prefix_to_value = "ML"
+
+[node name="GraphNode Listen Text Vertical Gauge Basic5" parent="GraphEdit" unique_id=557694885 instance=ExtResource("10_wqtqh")]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 360.0
+offset_right = 442.0
+offset_bottom = 500.0
+position_offset = Vector2(390, 360)
+title = "MR"
+
+[node name="VSlider" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic5" index="2" unique_id=1300271918]
+max_value = 255.0
+
+[node name="BeGraphInTextToGaugeBasic" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic5/VSlider" index="0" unique_id=904532289]
+_gauge_range_min_value = -255.0
+_gauge_range_max_value = 255.0
+_prefix_to_value = "MR"
+
+[node name="GraphNode Listen Text Vertical Gauge Basic6" parent="GraphEdit" unique_id=596959944 instance=ExtResource("10_wqtqh")]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 359.0
+offset_right = 506.0
+offset_bottom = 499.0
+position_offset = Vector2(454, 359)
+title = "LRL"
+
+[node name="VSlider" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic6" index="2" unique_id=1300271918]
+max_value = 1024.0
+
+[node name="BeGraphInTextToGaugeBasic" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic6/VSlider" index="0" unique_id=904532289]
+_gauge_range_max_value = 1024.0
+_gauge_step_value = 0.1
+_prefix_to_value = "LRL"
+
+[node name="GraphNode Listen Text Vertical Gauge Basic7" parent="GraphEdit" unique_id=1012849002 instance=ExtResource("10_wqtqh")]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 357.0
+offset_right = 573.0
+offset_bottom = 497.0
+position_offset = Vector2(521, 357)
+title = "LRR"
+
+[node name="VSlider" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic7" index="2" unique_id=1300271918]
+max_value = 1024.0
+
+[node name="BeGraphInTextToGaugeBasic" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic7/VSlider" index="0" unique_id=904532289]
+_gauge_range_max_value = 1024.0
+_gauge_step_value = 0.1
+_prefix_to_value = "LRR"
+
+[node name="GraphNode Listen Text Vertical Gauge Basic2" parent="GraphEdit" unique_id=524506207 instance=ExtResource("10_wqtqh")]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 357.0
+offset_right = 224.0
+offset_bottom = 507.0
+position_offset = Vector2(169, 357)
+title = "  °C"
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+
+[node name="VSlider" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic2" index="2" unique_id=1300271918]
+min_value = -5.0
+max_value = 40.0
+
+[node name="BeGraphInTextToGaugeBasic" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic2/VSlider" index="0" unique_id=904532289]
+_gauge_range_min_value = -5.0
+_gauge_range_max_value = 40.0
+_gauge_step_value = 0.01
+_prefix_to_value = "T"
+
+[node name="Label" type="Label" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic2" unique_id=1192195213]
+layout_mode = 2
+text = "23"
+
+[node name="GraphNode Listen Text Vertical Gauge Basic3" parent="GraphEdit" unique_id=441301704 instance=ExtResource("10_wqtqh")]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 359.0
+offset_right = 304.0
+offset_bottom = 509.0
+position_offset = Vector2(242, 359)
+title = " Sound"
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+
+[node name="VSlider" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic3" index="2" unique_id=1300271918]
+max_value = 255.0
+
+[node name="BeGraphInTextToGaugeBasic" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic3/VSlider" index="0" unique_id=904532289]
+_gauge_range_max_value = 255.0
+_gauge_step_value = 0.01
+_prefix_to_value = "S"
+
+[node name="Label" type="Label" parent="GraphEdit/GraphNode Listen Text Vertical Gauge Basic3" unique_id=1768309976]
+layout_mode = 2
+text = "0"
+
 [node name="GraphNode Listen Text3" parent="GraphEdit" unique_id=738919388 instance=ExtResource("11_ohhy1")]
 layout_mode = 0
-offset_left = 220.0
-offset_top = 839.0
-offset_right = 333.0
-offset_bottom = 937.0
-position_offset = Vector2(220, 839)
+offset_left = 216.0
+offset_top = 848.0
+offset_right = 329.0
+offset_bottom = 946.0
+position_offset = Vector2(216, 848)
 
+[node name="GraphNode Listen Text5" parent="GraphEdit" unique_id=31979690 instance=ExtResource("11_ohhy1")]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 545.0
+offset_right = 277.0
+offset_bottom = 643.0
+position_offset = Vector2(164, 545)
+title = "Right Led"
+
+[node name="BeGraphInTextToLightIndicator" parent="GraphEdit/GraphNode Listen Text5/ColorRect" parent_id_path=PackedInt32Array(31979690, 748295062) index="0" unique_id=1408577354]
+_prefix_to_value = "CR"
+
+[node name="GraphNode Listen Text4" parent="GraphEdit" unique_id=653411648 instance=ExtResource("11_ohhy1")]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 546.0
+offset_right = 156.0
+offset_bottom = 644.0
+position_offset = Vector2(43, 546)
+title = "Left Led"
+
+[node name="BeGraphInTextToLightIndicator" parent="GraphEdit/GraphNode Listen Text4/ColorRect" parent_id_path=PackedInt32Array(653411648, 748295062) index="0" unique_id=1408577354]
+_prefix_to_value = "CL"
+
+[node name="GraphNode Listen Analog" parent="GraphEdit" unique_id=1225502091 instance=ExtResource("14_8aljm")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 55.0
+offset_right = 289.0
+offset_bottom = 341.0
+position_offset = Vector2(25, 55)
+
+[node name="GraphNode Listen Digit" parent="GraphEdit" unique_id=1364228051 instance=ExtResource("15_d7g4l")]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 53.0
+offset_right = 567.0
+offset_bottom = 339.0
+position_offset = Vector2(295, 53)
+
+[node name="LineEdit Simulated Address" type="LineEdit" parent="." unique_id=198488500]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5516667
+anchor_top = 0.057169635
+anchor_right = 0.985
+anchor_bottom = 0.09372071
+grow_horizontal = 2
+grow_vertical = 2
+text = "00:00:00:00:00:00"
+placeholder_text = "00:00:00:00:00:00"
+metadata/_edit_use_anchors_ = true
+
+[node name="BeGraphSaveAddressInLineEdit" type="Node" parent="LineEdit Simulated Address" unique_id=2143789881 node_paths=PackedStringArray("_target_node")]
+script = ExtResource("14_ew2xb")
+_target_node = NodePath("..")
+_path_format = "user://ui/%s.txt"
+_save_unique_id = "UART_TARGET_ADDRESS"
+_default_if_not_set = "00:00:00:00:00:00"
+metadata/_custom_type_script = "uid://bagthxl1vawob"
+
+[connection signal="on_text_received_from_emitters" from="Emitters" to="Emitters/Emit as Formated" method="push_in_uart_text_with_inspector_address"]
 [connection signal="on_text_received_from_emitters" from="Emitters" to="Panel/HBoxContainer/Label Out" method="set_text"]
 [connection signal="on_received_text_from_remote" from="Listeners" to="Panel/HBoxContainer/Label In" method="set_text"]
 [connection signal="text_submitted" from="Panel/HBoxContainer/LineEdit" to="Listeners" method="push_text_to_all_listeners"]
+[connection signal="on_request_to_handle_received_text_from_remote" from="GraphEdit/GraphNode Listen Text6/BeGraphAbstractTextFromRemoteListener" to="GraphEdit/GraphNode Listen Text6/Label" method="set_text"]
+[connection signal="on_value_changed_as_string" from="GraphEdit/GraphNode Listen Text Vertical Gauge Basic2/VSlider/BeGraphInTextToGaugeBasic" to="GraphEdit/GraphNode Listen Text Vertical Gauge Basic2/Label" method="set_text"]
+[connection signal="on_value_changed_as_string" from="GraphEdit/GraphNode Listen Text Vertical Gauge Basic3/VSlider/BeGraphInTextToGaugeBasic" to="GraphEdit/GraphNode Listen Text Vertical Gauge Basic3/Label" method="set_text"]
+[connection signal="text_changed" from="LineEdit Simulated Address" to="Emitters/Emit as Formated" method="set_target_address"]
+[connection signal="on_loaded" from="LineEdit Simulated Address/BeGraphSaveAddressInLineEdit" to="Emitters/Emit as Formated" method="set_target_address"]
+[connection signal="on_loaded" from="LineEdit Simulated Address/BeGraphSaveAddressInLineEdit" to="LineEdit Simulated Address" method="set_text"]
+
+[editable path="GraphEdit/GraphNode Listen Text Vertical Gauge Basic4"]
+[editable path="GraphEdit/GraphNode Listen Text Vertical Gauge Basic5"]
+[editable path="GraphEdit/GraphNode Listen Text Vertical Gauge Basic6"]
+[editable path="GraphEdit/GraphNode Listen Text Vertical Gauge Basic7"]
+[editable path="GraphEdit/GraphNode Listen Text Vertical Gauge Basic2"]
+[editable path="GraphEdit/GraphNode Listen Text Vertical Gauge Basic3"]
+[editable path="GraphEdit/GraphNode Listen Text5"]
+[editable path="GraphEdit/GraphNode Listen Text4"]
